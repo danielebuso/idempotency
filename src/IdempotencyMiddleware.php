@@ -32,7 +32,7 @@ class IdempotencyMiddleware
 
         // Execute request and cache
         $response = $next($request);
-        $response->header(self::IDEMPOTENCY_HEADER, $key);
+        $response->header(config('idempotency.key'), $key);
         Cache::put($key, $response, config('idempotency.ttl'));
         return $response;
     }
