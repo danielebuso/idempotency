@@ -26,14 +26,18 @@ class IdempotencyMiddleware
         }
 
         // Check if is cached and return
-        if ($this->isCached($key)) {
-            return Cache::get($key);
+        if ($this->isCached($key, $request)) {
+            return Cache::get("idempotency:{$key}:response");
         }
 
         // Execute request and cache
         $response = $next($request);
         $response->header(config('idempotency.key'), $key);
-        Cache::put($key, $response, config('idempotency.ttl'));
+        Cache::put("idempotency:{$key}:request", [
+            "resource" => $request->path(),
+            "params" => $request->all(),
+        ], config('idempotency.ttl'));
+        Cache::put("idempotency:{$key}:response", $response, config('idempotency.ttl'));
         return $response;
     }
 
@@ -51,8 +55,11 @@ class IdempotencyMiddleware
      * @param string $key
      * @return bool
      */
-    private function isCached($key)
+    private function isCached($key, $request)
     {
-        return Cache::has($key);
+        return Cache::has("idempotency:{$key}:request") && Cache::get("idempotency:{$key}:request") === [
+                "resource" => $request->path(),
+                "params" => $request->all(),
+            ];
     }
 }
