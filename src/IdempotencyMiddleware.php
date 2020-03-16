@@ -48,7 +48,7 @@ class IdempotencyMiddleware
      */
     private function isIdempotentRequest($method, $key)
     {
-        return (in_array($method, config('idempotency.IDEMPOTENT_METHODS')) && $key);
+        return (in_array($method, config('idempotency.methods')) && $key);
     }
 
     /**

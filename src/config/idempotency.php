@@ -18,11 +18,11 @@ return [
     | Idempotency time to live
     |--------------------------------------------------------------------------
     |
-    | Specify the time (in minutes) that the request will be cached for.
+    | Specify the time (in seconds) that the request will be cached for.
     | Defaults to 1 hour.
     |
     */
-    'ttl' => env('IDEMPOTENCY_TTL', 60),
+    'ttl' => env('IDEMPOTENCY_TTL', 3600),
 
     /*
     |--------------------------------------------------------------------------
@@ -35,7 +35,7 @@ return [
     | design idempotent
     |
     */
-    'IDEMPOTENT_METHODS' => [
+    'methods' => [
         'POST',
     ],
 
