@@ -3,6 +3,7 @@
 namespace idempotency;
 
 use Closure;
+use Illuminate\Support\Facades\Cache;
 
 class IdempotencyMiddleware
 {
