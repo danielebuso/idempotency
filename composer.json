@@ -1,0 +1,21 @@
+{
+    "name": "danielebuso/idempotency",
+    "description": "An easily customisable and reusable idempotency middleware for Laravel.",
+    "require": {
+        "php": ">=5.4.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "idempotency\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "idempotency\\ServiceProvider"
+            ]
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}
