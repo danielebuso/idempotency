@@ -1,5 +1,9 @@
-
 # Laravel Idempotency
+
+[![Latest Version on Packagist](https://img.shields.io/packagist/v/danielebuso/idempotency.svg?style=flat-square)](https://packagist.org/packages/danielebuso/idempotency)
+[![Software License](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](LICENSE.md)
+[![Total Downloads](https://img.shields.io/packagist/dt/danielebuso/idempotency.svg?style=flat-square)](https://packagist.org/packages/danielebuso/idempotency)
+
 A super simple, customisable and automatically registering middleware to help you ensure your requests are Idempotent when it’s required.
 
 Inspired by the guys at Stripe https://stripe.com/blog/idempotency and the realisation of how important this little feature is I mocked up this package. 
